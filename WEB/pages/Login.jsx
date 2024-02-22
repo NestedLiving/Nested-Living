@@ -1,12 +1,67 @@
+import Input from "../src/components/Input";
+import { useFormik } from "formik";
+import { string, object } from "yup";
+import Button from "../src/components/Button";
+import { useContext } from "react";
+import AuthContext from "../src/context/AuthContext"
+import { useNavigate } from "react-router-dom";
+
+const userSchema = object({
+    email: string().email('Enter a valid email').required('Required field'),
+    password: string().min(8, 'Password must be at least 8 characters').required('Required field') 
+});
 
 const Login = () => {
+    const { login } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const { values, errors, touched, isValid, handleBlur, handleChange, handleSubmit } = useFormik({
+        initialValues: {
+            email: '',
+            password: ''
+        },
+        onSubmit: (values) => {
+            login(values)
+                .then(() => navigate('/profile'))
+        },
+        validationSchema: userSchema,
+        validateOnChange: true,
+        validateOnBlur: true,
+        validateOnMount: true,
+    })
+
     return (
         <div>
-            <h1>
-                Login
-            </h1>
+            <h1 className=''>Sign in your account</h1>
+
+            <form onSubmit={handleSubmit}>
+                <div className="">
+                    <Input
+                        name="email"
+                        type="email"
+                        label="Email"
+                        placeholder="Ex: 'lucablo@gmail.com'"
+                        value={values.email}
+                        error={touched.email && errors.email}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                    />
+                    <Input
+                        name="password"
+                        type="password"
+                        label="Password"
+                        placeholder="Ex: '12345678'"
+                        value={values.password}
+                        error={touched.password && errors.password}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                    />
+                </div>
+                <Button className="" disabled={!isValid} text="Sign in" />
+
+            </form>
         </div>
-    );
-};
+    )
+}
 
 export default Login;
