@@ -3,12 +3,17 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+
+import SearchBar from './components/SearchBar';
+import Footer from "./components/Footer"
 import House from './pages/House';
 
 function App() {
     return (
         <div>
             <Navbar />
+
+            <SearchBar />
 
             <div>
                 <Routes>
@@ -18,6 +23,7 @@ function App() {
                     <Route path="/houses" element={<House />} />
                 </Routes>
             </div>
+            <Footer />
         </div>
     )
 }
