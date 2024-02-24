@@ -20,7 +20,8 @@ const Navbar = () => {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/register">Register</Link>
                             </li>
-                            <li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/houses">Add your house</Link>
                                 
                             </li>
                         </ul>
