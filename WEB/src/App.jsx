@@ -3,11 +3,16 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import SearchBar from './components/SearchBar';
+import Footer from "./components/Footer"
+
 
 function App() {
     return (
         <div>
             <Navbar />
+
+            <SearchBar />
 
             <div>
                 <Routes>
@@ -16,6 +21,7 @@ function App() {
                     <Route path="/register" element={<Register />} />
                 </Routes>
             </div>
+            <Footer />
         </div>
     )
 }
