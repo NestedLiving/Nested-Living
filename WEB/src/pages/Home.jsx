@@ -1,10 +1,31 @@
+import { useEffect, useState } from 'react';
+import { createHouse } from '../services/HouseService';
+import HouseCard from '../components/HouseCard';
 
-const Home = () => {
+
+const Houses = () => {
+    const [houses, setHouses] = useState([]);
+
+    useEffect(() => {
+        createHouse()
+            .then(houses => setHouses(houses))
+            .catch(error => console.error(error))
+    }, [])
+
     return (
         <div>
-        
-        </div>
-    );
-};
 
-export default Home;
+        
+            <h1 className=''>Houses</h1>
+            <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                {houses.map(house => (
+                    <div key={house.id} className="col">
+                        <HouseCard {...house} />
+                    </div>
+                ))}
+            </div>
+        </div>
+    )
+}
+
+export default Houses;
