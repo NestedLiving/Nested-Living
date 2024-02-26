@@ -5,3 +5,7 @@ const http = createHttp(true)
 export const createHouse = (house) => {
     return http.post('/houses', house)
 }
+
+export const getHouse = () => {
+    return http.get('houses');
+}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { createHouse } from '../services/HouseService';
+import { getHouse } from '../services/HouseService';
 import HouseCard from '../components/HouseCard';
 
 
@@ -7,8 +7,8 @@ const Houses = () => {
     const [houses, setHouses] = useState([]);
 
     useEffect(() => {
-        createHouse()
-            .then(houses => setHouses(houses))
+        getHouse()
+            .then((houses) => setHouses(houses))
             .catch(error => console.error(error))
     }, [])
 

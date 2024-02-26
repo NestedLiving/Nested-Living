@@ -100,6 +100,24 @@ const NewHouse = () => {
                         onChange={handleChange}
                         onBlur={handleBlur}
                     />
+                    <Input 
+                    name="rooms"
+                    label="Rooms"
+                    placeholder="Ex: '3'"
+                    value={values.rooms}
+                    error={touched.rooms && errors.rooms}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    />
+                    <Input
+                    name="people"
+                    label="People"
+                    placeholder="Ex: '5'"
+                    value={values.people}
+                    error={touched.people && errors.people}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    />
                 </div>
                 <Button type="submit" text="Add house" disabled={!isValid} className="btn btn-primary" />
             </form>
