@@ -12,8 +12,6 @@ const NewHouse = () => {
 
     return (
         <div>
-            <h1 className=''>Add a new house</h1>
-
             <HouseForm onSubmit={onSubmit} />
         </div>
     )
