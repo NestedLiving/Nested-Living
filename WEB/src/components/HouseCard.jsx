@@ -6,7 +6,7 @@ import priceImage from '../assets/price.png';
 
 
 
-const HouseCard = ({ id, title, rooms, price, image, people, onClick = () => { } }) => {
+const HouseCard = ({ _id: id, title, rooms, price, image, people, onClick = () => { } }) => {
   return (
     <div className="card" style={{ width: '18rem' }}>
       <img src={image} className="card-img-top" alt={title} style={{ maxWidth: '100%', maxHeight: '200px', objectFit: 'cover' }} />
@@ -23,6 +23,9 @@ const HouseCard = ({ id, title, rooms, price, image, people, onClick = () => { }
         <div className="mt-2">
           <Link to={`/house/${id}`} className="btn btn-primary" onClick={onClick}>
             Detalles
+          </Link>
+          <Link to={`/ordering/${id}`} className="btn btn-primary" onClick={onClick}>
+            Reservar
           </Link>
         </div>
       </div>
