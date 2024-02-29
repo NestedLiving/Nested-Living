@@ -1,0 +1,44 @@
+/* Footer.css */
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 50px 0;
+    margin-top: 150px;
+}
+
+.footer-section {
+    margin-bottom: 30px;
+}
+
+.footer-section h5 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+}
+
+.social-icon {
+    font-size: 24px;
+    color: #fff;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #ffc107;
+    /* Cambia colore al passaggio del mouse */
+}
+
+/* Stili aggiuntivi per rendere i link più visibili */
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ffc107;
+}

@@ -8,6 +8,8 @@ import Footer from "./components/Footer"
 import House from './pages/House';
 import OrderingsPage from './pages/OrderingsPage';
 
+import UserProfile from './pages/UserProfile';
+
 function App() {
     return (
         <div>
@@ -22,6 +24,8 @@ function App() {
                     <Route path="/register" element={<Register />} />
                     <Route path="/houses" element={<House />} />
                     <Route path="/ordering" element={<OrderingsPage />} />
+                    <Route path="/profile" element={<UserProfile />}/>
+                    <Route path="/users/:id" element={<UserProfile />} />
                 </Routes>
             </div>
             <Footer />

@@ -149,17 +149,30 @@ const INITIAL_VALUES = {
     price: '',
     location: '',
     amenities: '',
-    images: ''
+    images: '',
+    people: '',
+    rooms: ''
 };
 
 const NewHouse = () => {
     const navigate = useNavigate();
-    const { values, errors, touched, handleChange, handleBlur, handleSubmit, isValid } = useFormik({
+    const { values, errors, touched, handleChange, handleBlur, handleSubmit, isValid, setFieldValue } = useFormik({
         initialValues: {
             ...INITIAL_VALUES
         },
         onSubmit: (values) => {
-            createHouse(values)
+            const data = new FormData();
+            Object.keys(values).forEach(keyValue => {
+                if (keyValue === 'images') {
+                    for (let i = 0; i < values.images.length; i++) {
+                        const image = values.images[i];
+                        data.append('images', image);
+                    }
+                } else {
+                    data.append(keyValue, values[keyValue]);
+                }
+            });
+            createHouse(data)
                 .then(() => navigate('/'))
                 .catch(error => console.error(error))
         },
@@ -221,10 +234,14 @@ const NewHouse = () => {
                 <Input
                     name="images"
                     label="Images"
+                    type="file"
+                    multiple
                     placeholder="Ex: 'https://image.com'"
-                    value={values.images}
+                    //value={values.images}
                     error={touched.images && errors.images}
-                    onChange={handleChange}
+                    onChange={(event) => {
+                        setFieldValue("images", event.target.files); 
+                    }}
                     onBlur={handleBlur}
                 />
                 <Input

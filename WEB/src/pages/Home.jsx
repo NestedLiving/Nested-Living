@@ -14,9 +14,6 @@ const Houses = () => {
 
     return (
         <div>
-
-        
-            <h1 className=''>Houses</h1>
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 {houses.map(house => (
                     <div key={house.id} className="col">

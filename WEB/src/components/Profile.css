@@ -1,0 +1,49 @@
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f7f7f7;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.profile-header-info {
+    flex: 1;
+}
+
+.profile-title {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.profile-email {
+    font-size: 18px;
+    color: #666;
+}
+
+.profile-header-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.houses-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.house-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
