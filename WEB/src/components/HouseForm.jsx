@@ -162,19 +162,22 @@ const NewHouse = () => {
         },
         onSubmit: (values) => {
             const data = new FormData();
+            // Agregar campos del formulario
             Object.keys(values).forEach(keyValue => {
-                if (keyValue === 'images') {
+                if (keyValue === "images") {
                     for (let i = 0; i < values.images.length; i++) {
-                        const image = values.images[i];
-                        data.append('images', image);
+                        const image = values.images[i]
+                        data.append("images", image)
                     }
                 } else {
                     data.append(keyValue, values[keyValue]);
                 }
             });
             createHouse(data)
-                .then(() => navigate('/'))
-                .catch(error => console.error(error))
+                .then(() => {
+                    navigate('/');
+                })
+                .catch(err => console.error(err));
         },
         validationSchema: houseSchema,
         validateOnBlur: true,

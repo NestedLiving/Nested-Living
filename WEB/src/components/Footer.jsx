@@ -23,10 +23,10 @@ const Footer = () => {
             <div className="footer-section">
               <h5>Link utili:</h5>
               <ul className="useful-links">
-                <li><a href="#!">Termini e condizioni</a></li>
-                <li><a href="#!">Privacy Policy</a></li>
-                <li><a href="#!">Domande frequenti</a></li>
-                <li><a href="#!">Contatti</a></li>
+                <li><Link to="#">Therms and conditions</Link></li>
+                <li><Link to="#">Privacy Policy</Link></li>
+                <li><Link to="#">FAQ</Link></li>
+                <li><Link to="#">Contact</Link></li>
               </ul>
             </div>
           </div>

@@ -7,8 +7,8 @@ import SearchBar from './components/SearchBar';
 import Footer from "./components/Footer"
 import House from './pages/House';
 import OrderingsPage from './pages/OrderingsPage';
-
 import UserProfile from './pages/UserProfile';
+import HouseDetail from './pages/HouseDetail';
 
 function App() {
     return (
@@ -26,6 +26,7 @@ function App() {
                     <Route path="/ordering" element={<OrderingsPage />} />
                     <Route path="/profile" element={<UserProfile />}/>
                     <Route path="/users/:id" element={<UserProfile />} />
+                    <Route path="/houses/:id" element={<HouseDetail />} />
                 </Routes>
             </div>
             <Footer />

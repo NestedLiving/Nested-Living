@@ -83,8 +83,7 @@ export default Register;*/
 import { object, string } from 'yup';
 import Input from "../components/Input";
 import { useFormik } from "formik";
-import { useContext } from "react";
-import AuthContext from "../contexts/AuthContext";
+import { register } from "../services/AuthService";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import { motion } from "framer-motion";
@@ -97,9 +96,7 @@ const userSchema = object({
 });
 
 const Register = () => {
-    const { register } = useContext(AuthContext);
     const navigate = useNavigate();
-
     const { values, errors, touched, isValid, handleBlur, handleChange, handleSubmit } = useFormik({
         initialValues: {
             username: "",
@@ -162,7 +159,7 @@ const Register = () => {
                             onBlur={handleBlur}
                         />
                     </div>
-                    <Button className="w-100" disabled={!isValid} text="Create account" />
+                    <Button type="submit" className="w-100" disabled={!isValid} text="Create account" />
                 </form>
             </div>
         </motion.div>

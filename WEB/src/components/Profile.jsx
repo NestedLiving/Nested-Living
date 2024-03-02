@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import HouseCard from "./HouseCard";
-import { getHouse } from "../services/HouseService";
+import { getMyHouses } from "../services/HouseService";
 import "./Profile.css";
 
 
@@ -10,10 +10,9 @@ const Profile = ({ user, profileImage }) => {
     const [houses, setHouses] = useState([]);
 
     useEffect(() => {
-        getHouse()
-            .then((houses) => {
-                setHouses(houses);
-            });
+        getMyHouses()
+            .then((houses) => setHouses(houses))
+            .catch((error) => console.error(error));
     }, []);
 
     const defaultProfileImage = 'https://via.placeholder.com/150';
