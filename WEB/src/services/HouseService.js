@@ -9,3 +9,11 @@ export const createHouse = (house) => {
 export const getHouse = () => {
     return http.get('houses');
 }
+
+export const getMyHouses = () => {
+    return http.get('houses/me');
+}
+
+export const getHouseDetail = (id) => {
+    return http.get(`houses/${id}`);
+}
