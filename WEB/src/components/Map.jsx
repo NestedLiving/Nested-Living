@@ -1,35 +1,65 @@
+import { Paper } from "@material-ui/core";
 import mapboxgl from "mapbox-gl";
 import { useEffect, useRef } from "react";
 
 const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoibHVjYTkyOTIiLCJhIjoiY2x0OHZ5czI0MHh5dTJpcXJyb3BzZzhrNSJ9.dh0hx2A1m4HH0TtRwiUkyg';
 
-const mapStyle = 'mapbox://styles/mapbox/streets-v11';
 
-const Map = ({ coordinates }) => {
+export default function Map() {
     const mapContainer = useRef(null);
-    
+
     useEffect(() => {
-        if (!coordinates || coordinates.length !== 2 || isNaN(coordinates[0]) || isNaN(coordinates[1])) {
-            return;
-        }
         mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
-        const map = new mapboxgl.Map({
-            container: mapContainer.current,
-            style: mapStyle,
-            center: coordinates,
-            zoom: 12
-        });
-        
-        map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
 
-        new mapboxgl.Marker()
-            .setLngLat(coordinates)
-            .addTo(map);
+        const getCurrentPosition = () => {
+            return new Promise((resolve, reject) => {
+                if (!navigator.geolocation) {
+                    reject(new Error('Geolocation is not supported by your browser'));
+                } else {
+                    navigator.geolocation.getCurrentPosition(
+                        (position) => {
+                            resolve({
+                                latitude: position.coords.latitude,
+                                longitude: position.coords.longitude,
+                            });
+                        },
+                        (error) => {
+                            reject(error);
+                        }
+                    );
+                }
+            });
+        };
 
-        return () => map.remove();
-    }, [coordinates]);
+        const initializeMap = async () => {
+            const currentPosition = await getCurrentPosition();
 
-    return <div ref={mapContainer} style={{ width: '100%', height: '300px' }} />;
+            const map = new mapboxgl.Map({
+                container: mapContainer.current,
+                style: 'mapbox://styles/mapbox/streets-v12',
+                center: [currentPosition.longitude, currentPosition.latitude],
+                zoom: 9,
+            });
+
+            // Aggiungi un marker per la posizione corrente
+            new mapboxgl.Marker()
+                .setLngLat([currentPosition.longitude, currentPosition.latitude])
+                .setPopup(new mapboxgl.Popup().setHTML("<h3>Estàs a qui</h3>"))
+                .addTo(map);
+        };
+
+        initializeMap();
+    }, []);
+
+
+
+
+    return (
+        <Paper elevation={3} className="map-container" style={{ height: "500px", width: "100%" }}>
+            <div ref={mapContainer} style={{ height: "100%" }} />
+        </Paper>
+    )
 }
 
-export default Map;
+
+

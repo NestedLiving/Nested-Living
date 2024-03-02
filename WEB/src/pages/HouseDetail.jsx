@@ -46,7 +46,8 @@ const HouseDetail = () => {
                         
                     </div>
                     <div className="col-md-6">
-                        <Map coordinates={[house.longitude, house.latitude]} />
+                        <Map location={house
+                            .location} />   
                     </div>
                 </div>
             )}
