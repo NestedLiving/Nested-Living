@@ -9,6 +9,7 @@ import House from './pages/House';
 import OrderingsPage from './pages/OrderingsPage';
 import UserProfile from './pages/UserProfile';
 import HouseDetail from './pages/HouseDetail';
+import Map from './components/Map';
 
 function App() {
     return (
@@ -27,6 +28,7 @@ function App() {
                     <Route path="/profile" element={<UserProfile />}/>
                     <Route path="/users/:id" element={<UserProfile />} />
                     <Route path="/houses/:id" element={<HouseDetail />} />
+                    <Route path='/maps' element={<Map/>} />
                 </Routes>
             </div>
             <Footer />
