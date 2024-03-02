@@ -29,30 +29,9 @@ export default Houses;*/
 import { useEffect, useState } from 'react';
 import { getHouse } from '../services/HouseService';
 import HouseCard from '../components/HouseCard';
-import { Container, Grid, makeStyles, Fade } from '@material-ui/core';
-
-const useStyles = makeStyles((theme) => ({
-    container: {
-        padding: theme.spacing(4),
-    },
-    cardWrapper: {
-        position: 'relative',
-        overflow: 'hidden',
-        borderRadius: theme.spacing(2),
-        boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
-        transition: 'box-shadow 0.3s ease',
-        '&:hover': {
-            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)',
-        },
-    },
-    cardImage: {
-        width: '100%',
-        height: 'auto',
-    },
-}));
+import { Container, Row, Col, Fade } from 'react-bootstrap';
 
 const Houses = () => {
-    const classes = useStyles();
     const [houses, setHouses] = useState([]);
     const [loaded, setLoaded] = useState(false);
 
@@ -66,21 +45,24 @@ const Houses = () => {
     }, []);
 
     return (
-        <Container className={classes.container}>
-            <Grid container spacing={3}>
+        <Container className="py-4">
+            <Row xs={1} md={2} lg={3} className="g-4">
                 {loaded && houses.map((house, index) => (
-                    <Grid key={house.id} item xs={12} sm={6} md={4}>
+                    <Col key={house.id}>
                         <Fade in timeout={500 + index * 100} unmountOnExit>
-                            <div className={classes.cardWrapper}>
-                                <img src={house.images[0]} alt={house.title} className={classes.cardImage} />
-                                <HouseCard {...house} />
+                            <div className="card mb-3">
+                                
+                                <div className="card-body">
+                                    <HouseCard {...house} />
+                                </div>
                             </div>
                         </Fade>
-                    </Grid>
+                    </Col>
                 ))}
-            </Grid>
+            </Row>
         </Container>
     );
 }
 
 export default Houses;
+

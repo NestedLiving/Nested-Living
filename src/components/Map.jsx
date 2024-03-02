@@ -1,4 +1,4 @@
-import { Paper } from "@material-ui/core";
+
 import mapboxgl from "mapbox-gl";
 import { useEffect, useRef } from "react";
 
@@ -55,9 +55,9 @@ export default function Map() {
 
 
     return (
-        <Paper elevation={3} className="map-container" style={{ height: "500px", width: "100%" }}>
+        <Pape elevation={3} className="map-container" style={{ height: "500px", width: "100%" }}>
             <div ref={mapContainer} style={{ height: "100%" }} />
-        </Paper>
+        </Pape>
     )
 }
 
