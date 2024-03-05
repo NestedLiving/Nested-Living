@@ -1,0 +1,49 @@
+.house-detail-container {
+    padding: 20px;
+}
+
+.house-info {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.house-image {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.house-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.house-description {
+    font-size: 16px;
+}
+
+.house-price,
+.house-location {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.map-container {
+    margin-top: 20px;
+    /* Aggiunta di spaziatura sopra la mappa */
+    border-radius: 8px;
+    /* Bordi arrotondati */
+    overflow: hidden;
+    /* Nascondi il contenuto che esce dal bordo */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Ombra leggera */
+}
+
+.map-wrapper {
+    width: 100%;
+    /* Mappa che si adatta al contenitore */
+    height: 500px;
+    /* Altezza fissa della mappa */
+    border: none;
+    /* Rimuovere il bordo */
+}

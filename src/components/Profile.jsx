@@ -1,11 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import HouseCard from "./HouseCard";
 import { getMyHouses } from "../services/HouseService";
 import "./Profile.css";
+import Avatar from "../components/Avatar";
+import AuthContext from "../contexts/AuthContext";
 
 
 
-const Profile = ({ user, profileImage }) => {
+const Profile = () => {
+    const { user } = useContext(AuthContext);
+    console.log(user)
 
     const [houses, setHouses] = useState([]);
 
@@ -15,16 +19,15 @@ const Profile = ({ user, profileImage }) => {
             .catch((error) => console.error(error));
     }, []);
 
-    const defaultProfileImage = 'https://via.placeholder.com/150';
     return (
         <div className="profile-container mt-4">
             <div className="profile-header">
                 <div className="profile-header-info">
-                    <h2 className="profile-title">Welcome, {user.username}!</h2>
-                    <p className="profile-email">{user.email}</p>
+                    <h2 className="profile-title">Welcome, {user?.username}!</h2>
+                    <p className="profile-email">{user?.email}</p>
                 </div>
                 <div className="profile-header-image">
-                    <img src={profileImage || defaultProfileImage} alt="Profile" />
+                    <Avatar avatar={user?.avatar} />
                 </div>
             </div>
             <div className="houses-container">

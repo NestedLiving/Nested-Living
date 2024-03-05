@@ -17,3 +17,4 @@ export const getMyHouses = () => {
 export const getHouseDetail = (id) => {
     return http.get(`houses/${id}`);
 }
+

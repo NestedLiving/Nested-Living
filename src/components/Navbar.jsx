@@ -73,6 +73,7 @@ import { motion } from "framer-motion";
 import "./Navbar.css";
 import { logout } from "../stores/AccessTokenStore";
 import AuthContext from "../contexts/AuthContext";
+import Avatar from "./Avatar";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -88,8 +89,8 @@ const Navbar = () => {
         logout();
     };
 
-    // URL dell'immagine del profilo predefinita
-    const defaultProfileImageUrl = "https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg";
+    
+    
 
     useEffect(() => {
         const handleScroll = () => {
@@ -157,12 +158,13 @@ const Navbar = () => {
                         )}
                     </ul>
                 </motion.div>
-                {/* Immagine del profilo */}
-                <div className="profile-icon-container">
-                    <Link className="nav-link" to="/profile">
-                    <img src={defaultProfileImageUrl} className="profile-icon" alt="Profile" />
-                    </Link>
-                </div>
+                {user ? (
+                    <div className="profile-icon-container">
+                        <Link className="nav-link" to="/profile">
+                            <Avatar avatar={user.avatar} />
+                        </Link>
+                    </div>
+                ) : null}
             </div>
         </nav>
     );

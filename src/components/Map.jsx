@@ -44,7 +44,7 @@ export default function Map() {
             // Aggiungi un marker per la posizione corrente
             new mapboxgl.Marker()
                 .setLngLat([currentPosition.longitude, currentPosition.latitude])
-                .setPopup(new mapboxgl.Popup().setHTML("<h3>Estàs a qui</h3>"))
+                .setPopup(new mapboxgl.Popup().setHTML("<h3>Estàs aqui</h3>"))
                 .addTo(map);
         };
 
@@ -55,10 +55,10 @@ export default function Map() {
 
 
     return (
-        <Pape elevation={3} className="map-container" style={{ height: "500px", width: "100%" }}>
+        <div className="map-container" style={{ height: "500px", width: "100%" }}>
             <div ref={mapContainer} style={{ height: "100%" }} />
-        </Pape>
-    )
+        </div>
+    );
 }
 
 
