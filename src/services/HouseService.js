@@ -18,3 +18,5 @@ export const getHouseDetail = (id) => {
     return http.get(`houses/${id}`);
 }
 
+export const editHouse = (id, data) => http.put(`/houses/${id}`, data)
+

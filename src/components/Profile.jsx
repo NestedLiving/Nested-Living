@@ -27,6 +27,7 @@ const Profile = () => {
                     <p className="profile-email">{user?.email}</p>
                 </div>
                 <div className="profile-header-image">
+
                     <Avatar avatar={user?.avatar} />
                 </div>
             </div>
