@@ -11,6 +11,7 @@ import UserProfile from './pages/UserProfile';
 import HouseDetail from './pages/HouseDetail';
 import Map from './components/Map';
 import Activation from './pages/Activation';
+import EditHouse from './pages/EditHouse';
 
 function App() {
     return (
@@ -31,6 +32,7 @@ function App() {
                     <Route path="/houses/:id" element={<HouseDetail />} />
                     <Route path='/maps' element={<Map/>} />
                     <Route path="/activate/:token" element={<Activation />} />
+                    <Route path="/houses/:id/edit" element={<EditHouse />} />
                 </Routes>
             </div>
             <Footer />

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams, Link } from "react-router-dom";
 import { getHouseDetail } from "../services/HouseService";
 import Map from "../components/Map";
 import ReservationForm from "../components/ReservetionForm";
@@ -62,6 +62,7 @@ const HouseDetail = () => {
                             </div>
                         </div>
                     </div>
+                    <Link to={`/houses/${id}/edit`} className="btn btn-success">Editar</Link>
                     <div className="row mt-5">
                         <div className="col-md-12">
                             <div className="bg-light p-3 rounded">
