@@ -3,19 +3,12 @@
     display: block;
 }
 
-.house-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    /* 4 card per riga, adattabili alla larghezza del contenitore */
-    gap: 20px;
-    /* Spaziatura tra le card */
-}
-
 .card {
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
+    position: relative;
 }
 
 .card:hover {
@@ -25,7 +18,6 @@
 .card-img {
     width: 100%;
     height: 200px;
-    /* Imposta l'altezza desiderata della card */
     object-fit: cover;
     aspect-ratio: 16/9;
 }
@@ -35,25 +27,57 @@
 }
 
 .card-title {
-    font-size: 1.6rem;
-    margin-bottom: 15px;
+    font-size: 1.2rem;
+    /* Riduco la dimensione del titolo */
+    margin-bottom: 10px;
+    /* Riduco il margine inferiore del titolo */
     color: #333;
+}
+
+.title-with-like {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .card-details {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 10px;
+    /* Aggiungo un margine superiore ai dettagli */
 }
 
 .detail {
     display: flex;
     align-items: center;
-    margin-right: 15px;
 }
 
 .detail i {
     margin-right: 8px;
+}
+
+.like-button {
+    cursor: pointer;
+}
+
+/* Riduci la dimensione dell'icona del cuore */
+.like-button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: transparent;
+    /* Riempimento trasparente */
+    stroke: #ccc;
+    /* Contorno grigio chiaro */
+    stroke-width: 2;
+    /* Spessore del contorno */
+}
+
+.like-button svg.fill-red-600 {
+    fill: red;
+    /* Riempimento rosso quando ha il like */
+    stroke: red;
+    /* Contorno rosso quando ha il like */
 }
 
 @media (max-width: 768px) {

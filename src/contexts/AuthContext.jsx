@@ -17,7 +17,6 @@ export const AuthContextProvider = ({ children }) => {
     const fetchCurrentUser = useCallback(() => {
         getCurrentUser()
             .then(user => {
-                console.log('entro', user)
                 setUser(user)
                 setIsAuthFetched(true)
             })
