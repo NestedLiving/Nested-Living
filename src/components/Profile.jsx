@@ -9,7 +9,6 @@ import AuthContext from "../contexts/AuthContext";
 
 const Profile = () => {
     const { user } = useContext(AuthContext);
-    console.log(user)
 
     const [houses, setHouses] = useState([]);
 

@@ -7,6 +7,7 @@ import ReservationForm from "../components/ReservetionForm";
 
 const HouseDetail = () => {
     const { id } = useParams();
+    
 
 
     const [house, setHouse] = useState({});
@@ -73,7 +74,7 @@ const HouseDetail = () => {
                     </div>
                         <div className="row mt-5">
                             <div className="col-md-12 mt-5">
-                                <ReservationForm />
+                                <ReservationForm houseId={id}/>
                             </div>
                         </div>
                 </div>

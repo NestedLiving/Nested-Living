@@ -52,38 +52,39 @@ const HouseCard = ({ _id: id, title, rooms, price, images, people, onClick, isLi
 
   return (
     <div>
-      <Link to={`/houses/${id}`} onClick={onClick} className="house-card">
-        <div className="card mt-4">
+      <div className="card mt-4">
+        <Link to={`/houses/${id}`} onClick={onClick} className="house-card">
           <img src={images[0]} className="card-img" alt={title} />
-          <div className="card-content">
+        </Link>
+        <div className="card-content">
+          <div className="title-with-like">
             <h5 className="card-title">{title}</h5>
-            <div className="card-details">
-              <div className="detail">
-                <i className="fas fa-door-open"></i>
-                <p>{rooms} Rooms</p>
+            {showLikeButton && (
+              <div onClick={handleLike} className="like-button">
+                {like ? (
+                  <HeartIcon className="h-3 fill-red-600" />
+                ) : (
+                  <OutlineHeartIcon className="h-3" />
+                )}
               </div>
-              <div className="detail">
-                <i className="fas fa-users"></i>
-                <p>Max {people} Guests</p>
-              </div>
-              <div className="detail">
-                <i className="fas fa-dollar-sign"></i>
-                <p>€{price} / night</p>
-              </div>
+            )}
+          </div>
+          <div className="card-details">
+            <div className="detail">
+              <i className="fas fa-door-open"></i>
+              <p>{rooms} Rooms</p>
+            </div>
+            <div className="detail">
+              <i className="fas fa-users"></i>
+              <p>Max {people} Guests</p>
+            </div>
+            <div className="detail">
+              <i className="fas fa-dollar-sign"></i>
+              <p>€{price} / night</p>
             </div>
           </div>
         </div>
-      </Link>
-      {showLikeButton && (
-        <div onClick={handleLike} className="mt-3 d-flex gap-1 align-items-center text-dark text-sm cursor-pointer">
-          {like ? (
-            <HeartIcon className="h-3 fill-red-600" />
-            
-            ) : (
-            <OutlineHeartIcon className="h-3" />
-          )}
-        </div>
-      )}
+      </div>
     </div>
   );
 };

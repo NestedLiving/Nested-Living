@@ -1,18 +1,34 @@
 import { useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { createReservation } from '../services/ReservetionService';
+
 
 const ReservationForm = () => {
+    
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [guests, setGuests] = useState(1);
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
 
+    const reservation = {name, email, guests, startDate, endDate };
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         // Handle form submission logic here
+    };
+
+    const handleCheckout = async ({houseId}) => {
+        createReservation(houseId, reservation)
+        .then((session) => {
+            window.location.href = session.url;
+            })
+            .catch((error) => {
+                console.error(error);
+                
+            })
     };
 
     return (
@@ -64,9 +80,9 @@ const ReservationForm = () => {
                         />
                     </Form.Group>
 
-                    <Button variant="primary" type="submit" className="w-100">
-                        Book Now
-                    </Button>
+                    <button onClick={handleCheckout}>
+                        checkout
+                    </button>
                 </Form>
             </div>
         </div>
@@ -74,3 +90,4 @@ const ReservationForm = () => {
 };
 
 export default ReservationForm;
+
