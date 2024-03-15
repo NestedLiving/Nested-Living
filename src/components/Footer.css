@@ -1,19 +1,26 @@
 /* Footer.css */
 
 .footer {
-    background-color: #333;
+    background-color: #44546a;
     color: #fff;
-    padding: 50px 0;
-    margin-top: 150px;
+    padding: 20px 0;
+    /* Riduci ulteriormente il padding in alto e in basso */
+    margin-top: 50px;
+    /* Riduci lo spazio superiore */
+    font-size: 14px;
+    /* Riduci la dimensione del testo */
 }
 
 .footer-section {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
+    /* Riduci lo spazio tra le sezioni del footer */
 }
 
 .footer-section h5 {
-    font-size: 20px;
-    margin-bottom: 15px;
+    font-size: 16px;
+    /* Riduci leggermente la dimensione del titolo */
+    margin-bottom: 10px;
+    /* Riduci lo spazio inferiore del titolo */
 }
 
 .social-icons {
@@ -22,9 +29,11 @@
 }
 
 .social-icon {
-    font-size: 24px;
+    font-size: 20px;
+    /* Riduci leggermente la dimensione delle icone social */
     color: #fff;
-    margin-right: 15px;
+    margin-right: 10px;
+    /* Riduci lo spazio tra le icone social */
     transition: color 0.3s ease;
 }
 

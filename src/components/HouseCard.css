@@ -42,19 +42,28 @@
 
 .card-details {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-    /* Aggiungo un margine superiore ai dettagli */
+    flex-direction: column;
 }
 
 .detail {
-    display: flex;
-    align-items: center;
+    margin-bottom: 5px;
+}
+.detail-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    
 }
 
-.detail i {
-    margin-right: 8px;
+.detail-value {
+    color: #555;
+    margin-bottom: 0;
+    font-family: 'Airbnb Cereal App', sans-serif;
+}
+
+.detail-value1 {
+    color: #908e8e;
+    margin-bottom: 0;
+    font-family: 'Airbnb Cereal App', sans-serif;
 }
 
 .like-button {

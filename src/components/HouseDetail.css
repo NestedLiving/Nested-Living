@@ -47,3 +47,89 @@
     border: none;
     /* Rimuovere il bordo */
 }
+
+.avatar-small {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.comment-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.comment {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
+    word-wrap: break-word;
+    /* Questa proprietà fa in modo che il testo si avvolga automaticamente se è troppo lungo */
+    overflow: hidden;
+    /* Nasconde il testo che esce dal box */
+    text-overflow: ellipsis;
+    /* Visualizza un puntino di sospensione (...) per indicare che il testo è troncato */
+}
+
+.username {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.timestamp {
+    color: #aaa;
+    font-size: 0.8rem;
+}
+
+.comment-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.comment-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.comment-input-container {
+    position: relative;
+}
+
+.comment-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    transition: border-color 0.3s;
+}
+
+.comment-input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.comment-btn {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.comment-btn:hover {
+    background-color: #0056b3;
+}

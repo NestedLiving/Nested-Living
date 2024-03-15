@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="row">
           <div className="col-lg-4 col-md-6">
             <div className="footer-section">
-              <h5>Seguici sui social:</h5>
+              <h5>Follow us on social media:</h5>
               <div className="social-icons">
                 <Link to="https://www.twitter.com" className="social-icon"><i className="fab fa-twitter"></i></Link>
                 <Link to="https://www.facebook.com" className="social-icon"><i className="fab fa-facebook"></i></Link>
@@ -21,7 +21,7 @@ const Footer = () => {
           </div>
           <div className="col-lg-4 col-md-6">
             <div className="footer-section">
-              <h5>Link utili:</h5>
+              <h5>Links:</h5>
               <ul className="useful-links">
                 <li><Link to="#">Therms and conditions</Link></li>
                 <li><Link to="#">Privacy Policy</Link></li>
@@ -33,7 +33,7 @@ const Footer = () => {
           <div className="col-lg-4">
             <div className="footer-section">
               <h5>Nested Living</h5>
-              <p>© {new Date().getFullYear()} Tutti i diritti riservati.</p>
+              <p>© {new Date().getFullYear()} All rights reserved.</p>
             </div>
           </div>
         </div>

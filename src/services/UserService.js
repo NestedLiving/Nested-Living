@@ -10,6 +10,13 @@ export const toggleLike = (houseId) => {
     return http.post(`/likes/${houseId}`)
 }
 
+export const getAllUsers = () => {
+    return http.get('/users')
+}
+
+export const deleteUser = (userId) => {
+    return http.delete(`/users/${userId}`)
+}
 
 
 

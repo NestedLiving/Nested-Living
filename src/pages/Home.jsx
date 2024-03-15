@@ -27,42 +27,84 @@ const Houses = () => {
 
 export default Houses;*/
 import { useEffect, useState } from 'react';
-import { getHouse } from '../services/HouseService';
+import { getHouses } from '../services/HouseService';
 import HouseCard from '../components/HouseCard';
 import { Container, Row, Col, Fade } from 'react-bootstrap';
+import SearchBar from '../components/SearchBar';
 
 const Houses = () => {
     const [houses, setHouses] = useState([]);
     const [loaded, setLoaded] = useState(false);
+    const [searchParams, setSearchParams] = useState({
+        location: '',
+        people: 0,
+        startDate: '',
+        endDate: '',
+    });
 
     useEffect(() => {
-        getHouse()
+        getHouses(
+            searchParams.location,
+            searchParams.people,
+            searchParams.startDate,
+            searchParams.endDate
+        )
             .then((houses) => {
                 setHouses(houses);
                 setLoaded(true);
             })
             .catch(error => console.error(error))
-    }, []);
+    }, [searchParams]);
+
+    const handleClearFilters = () => {
+        setSearchParams({
+            location: '',
+            people: 0,
+            startDate: '',
+            endDate: '',
+        });
+
+    }
+
+
 
     return (
-        <Container className="py-4">
-            <Row xs={1} md={2} lg={3} className="g-4">
-                {loaded && houses.map((house, index) => (
-                    <Col key={house.id}>
-                        <Fade in timeout={500 + index * 100} unmountOnExit>
-                            <div className="card mb-3">
-                                
-                                <div className="card-body">
-                                    <HouseCard {...house} />
-                                </div>
-                            </div>
-                        </Fade>
-                    </Col>
-                ))}
-            </Row>
-        </Container>
+        <div>
+            <SearchBar
+                onSearch={setHouses}
+                onClearFiltres={handleClearFilters}
+                searchParams={searchParams}
+            />
+            <Container className="py-4">
+                {loaded && houses.length === 0 ? (
+                    <p className='no-results-message'>No results found</p>
+                ) : (
+                    <>
+                        <Row xs={1} md={2} lg={4} className="g-4">
+                            {houses.map((house, index) => (
+                                <Col key={house.id}>
+                                    <Fade in timeout={500 + index * 100} unmountOnExit>
+                                        <div className="card mb-3">
+
+                                            <div className="card-body">
+                                                <HouseCard {...house} />
+                                            </div>
+                                        </div>
+                                    </Fade>
+                                </Col>
+                            ))}
+                        </Row>
+                    </>
+
+                )}
+
+
+            </Container>
+        </div>
     );
 }
+
+
 
 export default Houses;
 

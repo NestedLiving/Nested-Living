@@ -1,13 +1,89 @@
 .login-container {
-    margin-top: 5rem;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    /* Aggiungi un margine superiore */
 }
 
-.login-title {
-    text-align: center;
-    margin-bottom: 2rem;
+.centered-container {
+    max-width: 600px;
+    width: 90%;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    background-color: #ffffff;
+    /* Aggiungi un colore di sfondo */
+}
+
+.login-content {
+    display: flex;
+    flex: 1;
 }
 
 .login-form {
-    max-width: 30rem;
-    margin: 0 auto;
+    flex: 1;
+    padding-right: 20px;
+}
+
+.login-video {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.login-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333333;
+    /* Cambia il colore del testo */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.input-field {
+    padding: 10px;
+    border: 1px solid #cccccc;
+    /* Cambia il colore del bordo */
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    /* Aggiungi una transizione al cambio di colore del bordo */
+}
+
+.input-field:focus {
+    border-color: #007bff;
+    /* Cambia il colore del bordo quando l'input è in focus */
+}
+
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    /* Cambia il colore di sfondo del pulsante */
+    color: #ffffff;
+    /* Cambia il colore del testo del pulsante */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    /* Aggiungi una transizione al cambio di colore di sfondo */
+}
+
+.button:hover {
+    background-color: #0056b3;
+    /* Cambia il colore di sfondo del pulsante quando si passa sopra con il mouse */
 }

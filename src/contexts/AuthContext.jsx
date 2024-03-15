@@ -49,6 +49,10 @@ export const AuthContextProvider = ({ children }) => {
         }
     }, [fetchCurrentUser, pathname])
 
+
+
+
+
     const contextValue = useMemo(() => ({
         isAuthFetched,
         user,

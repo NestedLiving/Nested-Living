@@ -1,18 +1,34 @@
-.navbar {
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
-    transition: background-color 0.3s ease;
-    /* Rimuoviamo la transizione per l'altezza */
+    .navbar {
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        background: linear-gradient(to right, #44546a, #ffffff);
+        transition: background-color 0.3s ease;
+        position: fixed;
+        height: 60px;
+        /* Ajusta la altura del navbar según sea necesario */
+    }
+
+.navbar-brand {
+    color: #1f3a93;
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 20px; /* Ajustar el margen derecho para separar el título del resto del contenido */
 }
 
-.navbar.scrolled {
-    background-color: rgba(255, 255, 255, 0.9);
-}
+    .navbar.scrolled {
+        background: linear-gradient(to right, #44546a, #ffffff);
+        /* Assicurati che il gradiente rimanga lo stesso durante lo scrolling */
+    }
 
     .navbar-brand {
         color: #1f3a93;
         font-size: 24px;
         font-weight: bold;
+    }
+
+    .navbar-logo {
+        width: 150px;
+        height: auto;
+        border-radius: 3px;
     }
 
     .navbar-toggler {
@@ -28,7 +44,7 @@
     }
 
     .nav-link:hover {
-        color: #ff385c;
+        color: #044eb6;
     }
 
     .navbar-nav li {
@@ -43,11 +59,8 @@
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        /* Rendi il riquadro rotondo */
         overflow: hidden;
-        /* Assicura che l'icona del profilo si adatti al riquadro rotondo */
         background-color: #f0f0f0;
-        /* Colore di sfondo del riquadro */
         display: flex;
         align-items: center;
         justify-content: center;

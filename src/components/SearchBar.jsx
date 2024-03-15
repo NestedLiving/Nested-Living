@@ -1,68 +1,64 @@
-/*import { useState } from 'react';
- // Importa il file CSS per le personalizzazioni
-
-const SearchBar = () => {
-    const [startDate, setStartDate] = useState("2024-02-22");
-    const [endDate, setEndDate] = useState("2024-02-24");
-
-    const handleStartDateChange = (e) => {
-        setStartDate(e.target.value);
-    };
-
-    const handleEndDateChange = (e) => {
-        setEndDate(e.target.value);
-    };
-
-    const handleSearch = () => {
-        // Logica per eseguire la ricerca con le date selezionate
-        console.log("Search clicked");
-    };
-
-    return (
-        <div className="container mt-4">
-            <div className="input-group">
-                <input type="search" className="form-control rounded" placeholder="Search City" aria-label="Search" aria-describedby="search-addon" />
-                <input type="date" className="form-control rounded" id="start" name="trip-start" value={startDate} min="2024-02-23" max="2025-01-01 " onChange={handleStartDateChange} />
-                <input type="date" className="form-control rounded" id="end" name="trip-end" value={endDate} min="2024-02-24" max="2026-01-01" onChange={handleEndDateChange} />
-                <input type="number" className="form-control rounded" placeholder="People" aria-label="Search" aria-describedby="search-addon" />
-                <button type="button" className="btn btn-primary rounded" onClick={handleSearch}>Search</button>
-            </div>
-        </div>
-    );
-};
-
-export default SearchBar;*/
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './SearchBar.css';
+import { getHouses } from '../services/HouseService';
 
-const SearchBar = () => {
-    const [startDate, setStartDate] = useState("2024-02-22");
-    const [endDate, setEndDate] = useState("2024-02-24");
+const SearchBar = ({ onSearch }) => {
+    const [location, setLocation] = useState('');
+    const [people, setPeople] = useState(0);
+    const [startDate, setStartDate] = useState("");
+    const [endDate, setEndDate] = useState("");
+    const [minPrice, setMinPrice] = useState('');
+    const [maxPrice, setMaxPrice] = useState('');
 
-    const handleStartDateChange = (e) => {
-        setStartDate(e.target.value);
-    };
-
-    const handleEndDateChange = (e) => {
-        setEndDate(e.target.value);
-    };
+    useEffect(() => {
+        handleSearch();
+    }, []);
 
     const handleSearch = () => {
-        // Logica per eseguire la ricerca con le date selezionate
-        console.log("Search clicked");
+        getHouses(location, startDate, endDate)
+            .then(houses => {
+                let filteredHouses = houses.filter(house => house.people >= people);
+
+                if (minPrice !== '' && maxPrice !== '') {
+                    filteredHouses = filteredHouses.filter(house => house.price >= minPrice && house.price <= maxPrice);
+                }
+
+                onSearch(filteredHouses);
+            })
+            .catch(error => {
+                console.error('Error during search:', error);
+            });
+    };
+
+
+    const handleClearFilters = () => {
+        setLocation('');
+        setPeople(0);
+        setStartDate("");
+        setEndDate("");
+        setMinPrice('');
+        setMaxPrice('');
+
+        getHouses('', 0, '', '')
+            .then(houses => {
+                onSearch(houses);
+            })
+            .catch(error => {
+                console.error('Error during search:', error);
+            });
     };
 
     return (
-        <div className="container mt-4" style={{ paddingTop: "80px" }}>
+        <div className="container " style={{ marginTop: '130px' }}>
             <div className="search-bar">
-                <input type="search" className="form-control rounded search-input" placeholder="Search City" aria-label="Search" aria-describedby="search-addon" />
-                <div className="date-picker">
-                    <input type="date" className="form-control rounded date-input" id="start" name="trip-start" value={startDate} min="2024-02-23" max="2025-01-01 " onChange={handleStartDateChange} />
-                    <input type="date" className="form-control rounded date-input" id="end" name="trip-end" value={endDate} min="2024-02-24" max="2026-01-01" onChange={handleEndDateChange} />
-                </div>
-                <input type="number" className="form-control rounded people-input" placeholder="People" aria-label="Search" aria-describedby="search-addon" />
-                <button type="button" className="btn btn-primary rounded search-btn" onClick={handleSearch}>Search</button>
+                <input type="search" className="search-input" placeholder="Search City" value={location} onChange={(e) => setLocation(e.target.value)} />
+                <input type="date" className="date-input" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+                <input type="date" className="date-input" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
+                <input type="number" className="people-input" placeholder="People" value={people} onChange={(e) => setPeople(parseInt(e.target.value, 10))} />
+                <input type="number" className="price-input" placeholder="Min Price" value={minPrice} onChange={(e) => setMinPrice(e.target.value)} />
+                <input type="number" className="price-input" placeholder="Max Price" value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)} />
+                <button type="button" className="search-btn" onClick={handleSearch}>Search</button>
+                <button type="button" className="clear-btn" onClick={handleClearFilters}>Clear</button>
             </div>
         </div>
     );
@@ -70,4 +66,6 @@ const SearchBar = () => {
 
 export default SearchBar;
 
+
+ 
 
