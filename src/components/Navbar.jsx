@@ -38,7 +38,7 @@ const Navbar = () => {
 
     return (
         <nav className={`navbar navbar-expand-lg navbar-light bg-light fixed-top ${scrollY > 0 ? "scrolled" : ""}`}>
-            <div className="container">
+            <div className="container ">
                 <Link className="navbar-brand" to="/">
                     <img src={logo2} alt="" className="navbar-logo" />
                 </Link>
@@ -68,6 +68,11 @@ const Navbar = () => {
                                 Add your house
                             </Link>
                         </motion.li>
+                                <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                                    <Link className="nav-link" to="/likes">
+                                        WishList
+                                    </Link>
+                                </motion.li>
                         <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                             <Link className="nav-link" to="/profile">
                                 {user.username}

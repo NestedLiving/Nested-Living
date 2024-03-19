@@ -1,9 +1,12 @@
 .search-bar-container {
-    padding-top: 80px;
+    padding-top: 20px;
+    margin-top: 80px;
 }
 
 .search-bar {
     display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     align-items: center;
     justify-content: space-between;
     background-color: #f8f9fa;
@@ -12,33 +15,29 @@
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.search-input {
+.search-input,
+.date-input,
+.price-input {
     flex-grow: 1;
     border: none;
     background: none;
-    font-size: 16px;
-    outline: none;
-}
-
-.date-picker {
-    display: flex;
-    gap: 10px;
-}
-
-.date-input {
-    flex-grow: 1;
-    border: none;
-    background: none;
-    font-size: 16px;
+    font-size: 14px;
     outline: none;
 }
 
 .people-input {
-    width: 80px;
+    width: 100px; /* Larghezza ridotta per il campo "People" */
+    padding: 6px; /* Riduci lo spazio interno solo per il campo "People" */
     border: none;
     background: none;
     font-size: 16px;
     outline: none;
+}
+
+.price-inputs {
+    display: flex;
+    gap: 10px;
+    flex-grow: 1;
 }
 
 .search-btn,
@@ -61,4 +60,8 @@
 .clear-btn {
     margin-left: 20px;
     background-color: #6c757d;
+}
+
+.date-input {
+    margin-top: 20px;
 }

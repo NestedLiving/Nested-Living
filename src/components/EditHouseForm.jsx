@@ -5,8 +5,8 @@ import Button from './Button';
 import { useNavigate, useParams } from 'react-router-dom';
 import { createHouse, editHouse, getHouseDetail } from '../services/HouseService';
 import { useEffect } from 'react';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import InputWithDatePicker from './InputWithDatePicker';
 const houseSchema = object({
     title: string().required('Required field'),
     description: string().required('Required field'),
@@ -70,8 +70,8 @@ const EditHouse = ({ initialValues }) => {
         }
     }, [id, setFieldValue]);
     return (
-        <div className="container mx-auto max-w-md mt-8">
-            <h1 className="text-3xl font-semibold mb-6">Add House</h1>
+        <div className="container1 mx-auto max-w-md " style={{ marginTop: '70px' }}>
+            <h1 className="text-3xl font-semibold mb-6 align-items-center">Edit your House</h1>
             <form onSubmit={handleSubmit}>
                 <Input
                     name="title"
@@ -210,28 +210,17 @@ const EditHouse = ({ initialValues }) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                 />
-                <DatePicker
-                    selected={values.startDate}
-                    onChange={(date) => {
-                        console.log('Start Date Selected:', date);
-                        setFieldValue('startDate', date);
-                    }}
-                    selectsStart
-                    startDate={values.startDate}
-                    endDate={values.endDate}
-                    dateFormat="dd-MM-yyy"
-                    placeholderText="Select start date"
+                <InputWithDatePicker
+                    name="startDate"
+                    value={values.startDate}
+                    onChange={setFieldValue}
+                    placeholder="Select start date"
                 />
-                <label>End Date:</label>
-                <DatePicker
-                    selected={values.endDate}
-                    onChange={(date) => setFieldValue('endDate', date)}
-                    selectsEnd
-                    startDate={values.startDate}
-                    endDate={values.endDate}
-                    minDate={values.startDate}
-                    dateFormat="dd-MM-yyy"
-                    placeholderText="Select end date"
+                <InputWithDatePicker
+                    name="endDate"
+                    value={values.endDate}
+                    onChange={setFieldValue}
+                    placeholder="Select end date"
                 />
                 <Button
                     type="submit"

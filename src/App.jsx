@@ -13,6 +13,10 @@ import Activation from './pages/Activation';
 import EditHouse from './pages/EditHouse';
 import AdminPage from './pages/AdminPage';
 import UserListPage from './pages/UserListPage';
+import PaymentSuccessPage from './pages/PaymentSuccessPage';
+import ProtectedRoute from './components/ProtectedRoute';
+import CurrentUserProfile from './pages/CurrentUserProfile';
+import LikesPage from './pages/LikesPage';
 
 
 
@@ -36,14 +40,17 @@ function App() {
                     <Route path="/register" element={<Register />} />
                     <Route path="/houses" element={<House />} />
                     <Route path="/ordering" element={<OrderingsPage />} />
-                    <Route path="/profile" element={<UserProfile />  }/>
+                    <Route path="/profile" element={<ProtectedRoute><CurrentUserProfile /></ProtectedRoute>  }/>
                     <Route path="/users/:id" element={<UserProfile />} />
                     <Route path="/houses/:id" element={<HouseDetail />} />
                     <Route path='/maps' element={<Map/>} />
                     <Route path="/activate/:token" element={<Activation />} />
                     <Route path="/houses/:id/edit" element={<EditHouse />} />
-                    <Route path="/admin/dashboard" element={<AdminPage />} />
+                    <Route path="/admin/dashboard" element={<ProtectedRoute role="admin"><AdminPage /></ProtectedRoute> } />
                     <Route path="/admin/dashboard/users" element={<UserListPage />} />
+                    <Route path="/checkout/:id/success" element={<PaymentSuccessPage />} />
+                    <Route path="/likes" element={<LikesPage />} /> {/* Nueva ruta para Likes */}
+               
                 </Routes>
             </div>
             {!isAdminDashboard && !isAdminUsers &&<Footer />}

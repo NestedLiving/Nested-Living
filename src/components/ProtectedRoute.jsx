@@ -25,23 +25,18 @@ const ProtectedRoute = ({children }) => {
 export default ProtectedRoute;*/
 
 import { useContext } from "react";
-import { Navigate, useLocation } from "react-router";
+import { Navigate } from "react-router";
 import AuthContext from "../contexts/AuthContext";
 
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute = ({ children, role }) => {
     const { isAuthFetched, user } = useContext(AuthContext);
-    const location = useLocation();
 
     if (!isAuthFetched) {
         return (<p>Loading...</p>);
     }
 
-    if (!user) {
+    if (!user || (role && user.role !== role)) {
         return (<Navigate to="/login" replace />);
-    }
-
-    if (user.role !== "admin") {
-        return (<Navigate to={location.pathname} />);
     }
 
     return children;

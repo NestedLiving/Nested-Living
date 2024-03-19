@@ -8,12 +8,12 @@
 }
 
 
-.centered-container {
-    height: 100%;
+.centered-container1 {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    /* Allinea gli elementi orizzontalmente */
     align-items: center;
-    max-width: 600px;
+    max-width: 700px;
     width: 90%;
     padding: 40px;
     border-radius: 20px;
@@ -56,4 +56,20 @@
 
 .button:hover {
     background-color: #0056b3;
+}
+
+.register-video {
+    width: 40%;
+    /* Regola la larghezza del video */
+    max-width: 400px;
+    /* Imposta una larghezza massima per il video */
+    height: auto;
+    /* Imposta l'altezza automatica per mantenere l'aspetto proporzionato */
+}
+
+.video {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
 }

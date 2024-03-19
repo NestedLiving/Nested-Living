@@ -1,6 +1,9 @@
 .house-detail-container {
     padding: 20px;
+    margin-top: 70px;
 }
+
+
 
 .house-info {
     background-color: #f9f9f9;
@@ -132,4 +135,46 @@
 
 .comment-btn:hover {
     background-color: #0056b3;
+}
+
+.btn-container {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Imposta il position e il z-index per il calendario */
+.reservation-form-container {
+    width: 100%;
+    /* Imposta la larghezza del riquadro del form al 100% */
+    max-width: 700px;
+    /* Imposta una larghezza massima per il riquadro del form, se necessario */
+    margin: 0 auto;
+    /* Centra il riquadro del form */
 }

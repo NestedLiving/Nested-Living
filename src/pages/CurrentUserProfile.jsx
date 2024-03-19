@@ -5,6 +5,8 @@ import AuthContext from "../contexts/AuthContext";
 const CurrentUserProfile = () => {
     const { user } = useContext(AuthContext);
 
+    console.log('in')
+
     return (
         <Profile user={user} />
     );

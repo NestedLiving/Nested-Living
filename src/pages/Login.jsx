@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import "./Login.css";
 import video from "../assets/video/video-nested.mp4";
+import { login as loginService } from "../services/AuthService";
 
 const userSchema = object({
     email: string().email("Enter a valid email").required("Required field"),
@@ -28,13 +29,23 @@ const Login = () => {
         handleBlur,
         handleChange,
         handleSubmit,
+        setFieldError,
     } = useFormik({
         initialValues: {
             email: "",
             password: "",
         },
         onSubmit: (values) => {
-            login(values).then(() => navigate("/profile"));
+            loginService(values)
+                .then((response) => {
+                    login(response.accessToken, navigate("/profile"))
+                })
+                .catch(err => {
+                    console.error(err);
+                    if (err.response?.data?.message) {
+                        setFieldError("email", err.response.data.message);
+                    }
+                })
         },
         validationSchema: userSchema,
         validateOnChange: true,
